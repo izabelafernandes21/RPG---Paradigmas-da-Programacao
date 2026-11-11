@@ -1,38 +1,20 @@
-from rpg.combatentes.base import Combatente
-from rpg.combatentes.inimigos import Goblin
+from rpg.batalha import Batalha
+from rpg.combatentes.chefao import Chefao
+from rpg.combatentes.inimigos import Goblin, Inimigo
 from rpg.combatentes.personagens import Arqueiro, Guerreiro, Mago, Personagem
-from rpg.ui.console import ConsoleSaida, Saida
+from rpg.ui.console import ConsoleEntrada, ConsoleSaida
 
 
-def mostrar_vida(saida: Saida, alvo: Combatente) -> None:
-    saida.mostrar(f"  Vida de {alvo.nome}: {alvo.vida}/{alvo.vida_maxima}")
+def main() -> None:
+    # Aqui são criadas as implementações concretas e injetadas na Batalha
+    saida = ConsoleSaida()
+    entrada = ConsoleEntrada()
 
+    herois: list[Personagem] = [Guerreiro("Thorin"), Mago("Merlin"), Arqueiro("Robin")]
+    inimigos: list[Inimigo] = [Goblin("Grunk"), Chefao("Ogro Rei")]
 
-def main(saida: Saida) -> None:
-    # Depende da abstração Saida, não de print.
-    herois: list[Personagem] = [
-        Guerreiro("Thorin"),
-        Mago("Merlin"),
-        Arqueiro("Robin"),
-    ]
-
-    saida.mostrar("=== STATUS ===")
-    for combatente in [*herois, Goblin("Grunk")]:
-        saida.mostrar(combatente.status())
-        saida.mostrar(f'  "{combatente.grito_de_guerra()}"')
-
-    saida.mostrar("\n=== ATAQUES BÁSICOS ===")
-    for heroi in herois:
-        goblin = Goblin("Grunk")  # goblin novo a cada teste
-        saida.mostrar(heroi.atacar(goblin))
-        mostrar_vida(saida, goblin)
-
-    saida.mostrar("\n=== HABILIDADES ESPECIAIS ===")
-    for heroi in herois:
-        goblin = Goblin("Grunk")
-        saida.mostrar(heroi.usar_habilidade(goblin))
-        mostrar_vida(saida, goblin)
+    Batalha(herois, inimigos, saida, entrada).executar()
 
 
 if __name__ == "__main__":
-    main(ConsoleSaida())
+    main()
