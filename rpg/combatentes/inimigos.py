@@ -1,15 +1,29 @@
 from abc import ABC
 
+from collections.abc import Sequence
+
 from rpg.combatentes.base import Combatente
 
 
 class Inimigo(Combatente, ABC):
     """Base de todos os inimigos.
 
-    Aberta para extensão (Open/Closed): para criar um Chefao, basta fazer
-    `class Chefao(Inimigo)` em outro arquivo ou aqui, sem mexer em nada
-    que já existe. Continua abstrata porque não implementa grito_de_guerra().
+    Aberta para extensão (Open/Closed): novos inimigos são novas subclasses.
+    O método agir() é o ponto de extensão: a Batalha chama agir() em qualquer
+    inimigo, e cada subclasse decide o que fazer (polimorfismo).
     """
+
+    def agir(self, alvos: Sequence[Combatente]) -> str:
+        """Comportamento padrão: ataca o alvo com menos vida.
+
+        Subclasses podem sobrescrever (ex.: Chefao). Recebe só alvos vivos.
+        Devolve o texto do que aconteceu (sem print).
+        """
+        return self.atacar(self._escolher_alvo(alvos))
+
+    def _escolher_alvo(self, alvos: Sequence[Combatente]) -> Combatente:
+        """Escolhe o alvo mais fraco (menor vida). Em empate, o primeiro."""
+        return min(alvos, key=lambda alvo: alvo.vida)
 
 
 class Goblin(Inimigo):
