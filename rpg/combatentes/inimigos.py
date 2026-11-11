@@ -1,7 +1,6 @@
-from abc import ABC
-
 from collections.abc import Sequence
 
+from abc import ABC
 from rpg.combatentes.base import Combatente
 
 
