@@ -54,6 +54,15 @@ class Combatente(ABC):
         """Recupera vida, sem ultrapassar a vida máxima."""
         self._vida = min(self._vida_maxima, self._vida + quantidade)
 
+    def aplicar_bonus(self, ataque: int = 0, defesa: int = 0) -> None:
+        """Soma bônus (ex.: de equipamentos) aos atributos.
+
+        É o ÚNICO jeito de alterar ataque e defesa de fora da classe,
+        e ele garante a regra: os valores nunca ficam negativos.
+        """
+        self._ataque = max(0, self._ataque + ataque)
+        self._defesa = max(0, self._defesa + defesa)
+
     def atacar(self, alvo: "Combatente") -> str:
         """Ataque básico. Devolve o texto do que aconteceu (sem print)."""
         dano = alvo.receber_dano(self._ataque)
