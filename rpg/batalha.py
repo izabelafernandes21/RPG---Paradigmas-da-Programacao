@@ -131,23 +131,6 @@ class Batalha:
         self._inventario.remover_equipavel(item)  # sai do inventário
         return True
 
-    def _turno_do_heroi(self, heroi: Personagem) -> None:
-        # Lista de (texto do menu, função a executar). Cada função recebe o
-        # alvo e devolve o texto. Para ganhar uma nova opção (ex.: usar item),
-        # basta adicionar um item nesta lista, sem mexer no resto.
-        acoes: list[tuple[str, Callable[[Combatente], str]]] = [
-            ("Atacar", heroi.atacar),
-            (f"Usar {heroi.habilidade.nome}", heroi.usar_habilidade),
-        ]
-        opcoes = [nome for nome, _ in acoes]
-        indice = self._entrada.escolher(f"Vez de {heroi.nome}. O que fazer?", opcoes)
-        _, executar = acoes[indice]
-
-        alvo = self._escolher_alvo()
-        vivos_antes = self._vivos(self._inimigos)  # foto antes da ação
-        self._saida.mostrar(executar(alvo))
-        self._anunciar_derrotas(vivos_antes)
-
     def _turno_dos_inimigos(self) -> None:
         self._saida.mostrar("--- Turno dos inimigos ---")
         for inimigo in self._inimigos:
