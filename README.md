@@ -229,7 +229,7 @@ Uma poção não precisa implementar `equipar()`, e uma espada não precisa impl
 
 <img width="311" height="313" alt="Captura de tela 2026-11-12 195530" src="https://github.com/user-attachments/assets/4b99b2e8-360f-4ba9-965d-d7660d3a50a6" />
 
-### Atacar um inimigo
+### Usar um ataque especial
 
 <img width="553" height="193" alt="Captura de tela 2026-11-12 195605" src="https://github.com/user-attachments/assets/67e69d7c-0417-4ea3-ac1f-b522ad8c260f" />
 
