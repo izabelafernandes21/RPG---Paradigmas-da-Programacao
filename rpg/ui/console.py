@@ -12,6 +12,15 @@ class Entrada(Protocol):
 
     def escolher(self, prompt: str, opcoes: list[str]) -> int: ...
 
+class LeitorDeTexto(Protocol):
+    """Interface pequena: quem sabe ler um texto livre (ex.: um nome).
+
+    É separada de Entrada de propósito: a Batalha só precisa de escolhas
+    numéricas e não deve ser obrigada a conhecer leitura de texto.
+    """
+
+    def ler_texto(self, prompt: str) -> str: ...
+
 
 class ConsoleSaida:
     """Implementação de Saida usando print (não herda de Saida: Protocol
@@ -40,3 +49,11 @@ class ConsoleEntrada:
             if 1 <= escolha <= len(opcoes):
                 return escolha - 1
             print(f"Opção inválida. Escolha entre 1 e {len(opcoes)}.")
+
+    def ler_texto(self, prompt: str) -> str:
+        """Pede um texto e repete até o jogador digitar algo não vazio."""
+        while True:
+            texto = input(f"{prompt} ").strip()
+            if texto:
+                return texto
+            print("O texto não pode ser vazio.")
