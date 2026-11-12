@@ -2,7 +2,7 @@ from collections.abc import Sequence
 
 from rpg.combatentes.base import Combatente
 from rpg.combatentes.inimigos import Inimigo
-from rpg.habilidades.habilidades import GolpePoderoso, Habilidade
+from rpg.habilidades.habilidades import Habilidade
 
 
 class Chefao(Inimigo):
@@ -14,11 +14,10 @@ class Chefao(Inimigo):
 
     INTERVALO_ESPECIAL: int = 3  # constante de classe: a cada quantas ações
 
-    def __init__(self, nome: str, habilidade: Habilidade | None = None) -> None:
-        # Vida muito maior que a do Goblin, defesa e ataque também maiores
+       def __init__(self, nome: str, habilidade: Habilidade) -> None:
         super().__init__(nome, vida_maxima=120, ataque=20, defesa=6)
-        # Habilidade injetada, igual ao Personagem (padrão: GolpePoderoso)
-        self._habilidade: Habilidade = habilidade or GolpePoderoso()
+        # Habilidade injetada de fora, igual ao Personagem
+        self._habilidade: Habilidade = habilidade
         self._acoes_realizadas: int = 0  # contador privado de ações
 
     def agir(self, alvos: Sequence[Combatente]) -> str:
