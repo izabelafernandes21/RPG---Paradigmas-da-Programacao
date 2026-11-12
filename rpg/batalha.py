@@ -15,14 +15,14 @@ class Batalha:
     Tudo chega pelo construtor (injeção de dependência).
     """
 
-def __init__(
+    def __init__(
         self,
         herois: list[Personagem],
         inimigos: list[Inimigo],
         inventario: Inventario,
         saida: Saida,
         entrada: Entrada,
-) -> None:
+    ) -> None:
         self._herois: list[Personagem] = herois
         self._inimigos: list[Inimigo] = inimigos
         self._inventario: Inventario = inventario
@@ -55,7 +55,7 @@ def __init__(
         return venceu
 
     # ---------- Turnos ----------
-       def _turno_do_heroi(self, heroi: Personagem) -> None:
+    def _turno_do_heroi(self, heroi: Personagem) -> None:
         # Lista de (texto do menu, método que executa a ação). Cada método
         # recebe o herói, faz suas próprias perguntas, mostra o resultado e
         # devolve True se a ação foi realizada (False = o jogador voltou

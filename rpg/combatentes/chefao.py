@@ -14,7 +14,7 @@ class Chefao(Inimigo):
 
     INTERVALO_ESPECIAL: int = 3  # constante de classe: a cada quantas ações
 
-       def __init__(self, nome: str, habilidade: Habilidade) -> None:
+    def __init__(self, nome: str, habilidade: Habilidade) -> None:
         super().__init__(nome, vida_maxima=120, ataque=20, defesa=6)
         # Habilidade injetada de fora, igual ao Personagem
         self._habilidade: Habilidade = habilidade
@@ -34,4 +34,4 @@ class Chefao(Inimigo):
         return self.atacar(alvo)
 
     def grito_de_guerra(self) -> str:
-        return "Tremei diante do Rei Ogro!"
+        return "Trema diante do Rei Ogro!"
