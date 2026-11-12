@@ -31,14 +31,26 @@ class Personagem(Combatente, ABC):
 #   Guerreiro: muita vida e defesa, ataque médio  -> aguenta, mas bate pouco
 #   Mago:      pouca vida e defesa, ataque alto   -> "canhão de vidro"
 #   Arqueiro:  tudo intermediário, ataque médio-alto -> versátil
+
 class Guerreiro(Personagem):
     def __init__(self, nome: str, habilidade: Habilidade) -> None:
         super().__init__(nome, 120, 15, 10, habilidade)
+
+    def grito_de_guerra(self) -> str:
+        return "Pela glória da batalha!"
+
 
 class Mago(Personagem):
     def __init__(self, nome: str, habilidade: Habilidade) -> None:
         super().__init__(nome, 70, 25, 3, habilidade)
 
+    def grito_de_guerra(self) -> str:
+        return "Sentirão o poder arcano!"
+
+
 class Arqueiro(Personagem):
     def __init__(self, nome: str, habilidade: Habilidade) -> None:
         super().__init__(nome, 90, 20, 6, habilidade)
+
+    def grito_de_guerra(self) -> str:
+        return "Minha flecha nunca erra!"

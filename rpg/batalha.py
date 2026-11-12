@@ -55,6 +55,15 @@ class Batalha:
         return venceu
 
     # ---------- Turnos ----------
+    def _turno_dos_herois(self) -> None:
+        self._saida.mostrar("--- Turno dos heróis ---")
+        for heroi in self._herois:
+            if not heroi.esta_vivo():
+                continue  # herói morto não age
+            if not self._vivos(self._inimigos):
+                break  # inimigos acabaram: o turno termina
+            self._turno_do_heroi(heroi)
+    
     def _turno_do_heroi(self, heroi: Personagem) -> None:
         # Lista de (texto do menu, método que executa a ação). Cada método
         # recebe o herói, faz suas próprias perguntas, mostra o resultado e
