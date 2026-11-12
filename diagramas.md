@@ -1,7 +1,5 @@
 # Diagramas de classes
 
-Diagramas em Mermaid (renderizados automaticamente pelo GitHub).
-
 ## 1. Combatentes e habilidades
 
 ```mermaid
