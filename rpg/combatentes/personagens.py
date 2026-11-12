@@ -1,12 +1,7 @@
 from abc import ABC
 
 from rpg.combatentes.base import Combatente
-from rpg.habilidades.habilidades import (
-    BolaDeFogo,
-    GolpePoderoso,
-    Habilidade,
-    TiroDuplo,
-)
+from rpg.habilidades.habilidades import Habilidade
 
 
 class Personagem(Combatente, ABC):
@@ -37,25 +32,13 @@ class Personagem(Combatente, ABC):
 #   Mago:      pouca vida e defesa, ataque alto   -> "canhão de vidro"
 #   Arqueiro:  tudo intermediário, ataque médio-alto -> versátil
 class Guerreiro(Personagem):
-    def __init__(self, nome: str, habilidade: Habilidade | None = None) -> None:
-        # Se ninguém injetar uma habilidade, usa a padrão do Guerreiro
-        super().__init__(nome, 120, 15, 10, habilidade or GolpePoderoso())
-
-    def grito_de_guerra(self) -> str:
-        return "Pela glória da batalha!"
-
+    def __init__(self, nome: str, habilidade: Habilidade) -> None:
+        super().__init__(nome, 120, 15, 10, habilidade)
 
 class Mago(Personagem):
-    def __init__(self, nome: str, habilidade: Habilidade | None = None) -> None:
-        super().__init__(nome, 70, 25, 3, habilidade or BolaDeFogo())
-
-    def grito_de_guerra(self) -> str:
-        return "Sentirão o poder arcano!"
-
+    def __init__(self, nome: str, habilidade: Habilidade) -> None:
+        super().__init__(nome, 70, 25, 3, habilidade)
 
 class Arqueiro(Personagem):
-    def __init__(self, nome: str, habilidade: Habilidade | None = None) -> None:
-        super().__init__(nome, 90, 20, 6, habilidade or TiroDuplo())
-
-    def grito_de_guerra(self) -> str:
-        return "Minha flecha nunca erra!"
+    def __init__(self, nome: str, habilidade: Habilidade) -> None:
+        super().__init__(nome, 90, 20, 6, habilidade)
