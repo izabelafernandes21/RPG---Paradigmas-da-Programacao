@@ -216,18 +216,30 @@ Uma poção não precisa implementar `equipar()`, e uma espada não precisa impl
 **Adicionar um novo item:** criar uma subclasse de `Item` que implemente `usar()` e/ou `equipar()` e adicioná-la em `main.criar_inventario()`.
 
 ---
+
+### Montando o grupo
+
 <img width="573" height="216" alt="Captura de tela 2026-11-12 195125" src="https://github.com/user-attachments/assets/38f10bab-e076-400c-951e-7e5732cfd111" />
+
+### Turno de um herói
 
 <img width="450" height="343" alt="Captura de tela 2026-11-12 195304" src="https://github.com/user-attachments/assets/1ca96653-60f3-4df4-a8eb-8e65146a3855" />
 
+### Turno de um herói
+
 <img width="311" height="313" alt="Captura de tela 2026-11-12 195530" src="https://github.com/user-attachments/assets/4b99b2e8-360f-4ba9-965d-d7660d3a50a6" />
+
+### Turno de um herói
 
 <img width="553" height="193" alt="Captura de tela 2026-11-12 195605" src="https://github.com/user-attachments/assets/67e69d7c-0417-4ea3-ac1f-b522ad8c260f" />
 
+### Turno de um herói
+
 <img width="329" height="350" alt="Captura de tela 2026-11-12 195643" src="https://github.com/user-attachments/assets/dd7a9baf-bdb3-45d8-9558-8d4adf1be400" />
 
-<img width="373" height="71" alt="Captura de tela 2026-11-12 195802" src="https://github.com/user-attachments/assets/a7dc23f9-91ee-4e48-ab77-cea9983f9289" />
+### Turno de um herói
 
+<img width="373" height="71" alt="Captura de tela 2026-11-12 195802" src="https://github.com/user-attachments/assets/a7dc23f9-91ee-4e48-ab77-cea9983f9289" />
 
 ## Autora
 
